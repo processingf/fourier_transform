@@ -1,0 +1,44 @@
+  -----------------------------------------------------------------------------
+  Fourier Transform Demo, A Real-time Fourier Transform demonstration program
+  Copyright (c) 2012, Subhajit Sahu. All rights reserved.
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -----------------------------------------------------------------------------
+  
+  
+  
+  
+  Credits
+  -------  
+  
+  The Fast Fourier Transform routines given in file "Signal.pde" marked 
+  with <by Jerome R. Breitenbach> belong to the following author:
+  ----------------------------------------------------------------------------
+   fft.c - fast Fourier transform and its inverse (both recursively)
+   Copyright (C) 2004, Jerome R. Breitenbach.  All rights reserved.
+
+   The author gives permission to anyone to freely copy, distribute, and use
+   this file, under the following conditions:
+      - No changes are made.
+      - No direct commercial advantage is obtained.
+      - No liability is attributed to the author for any damages incurred.
+  ----------------------------------------------------------------------------
+  I thank the author to provide the following routines, and assure him that:
+   - Only changes were made to use it in Java Environment (Processing)
+   - No commercial advantage is obtained.
+   - No liability is attributed to the author for any damages incurred.
+   
+   
+   
+   
