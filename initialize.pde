@@ -1,10 +1,14 @@
+/* @pjs preload="data/main-screen.png"; */
+/* @pjs font="data/BradleyHandITC-18.ttf"; */
+/* @pjs font="data/HarlowSolid-32.ttf"; */
+
 // Initializes this program
 void initialize() {
   // -- Load all Data required --
-  fntHeading = loadFont("Algerian-30.vlw");
-  fntAuthor = loadFont("AgencyFB-Reg-20.vlw");
-  fntButton = loadFont("BerlinSansFBDemi-Bold-20.vlw");
-  bckImg = loadImage("fourier-transform-demo-main-screen.png");
+  fntHeading = loadFont("data/Algerian-30.vlw");
+  fntAuthor = loadFont("data/AgencyFB-Reg-20.vlw");
+  fntButton = loadFont("data/BerlinSansFBDemi-Bold-20.vlw");
+  bckImg = loadImage("data/main-screen.png");
   
   // -- Initialize Variables --
   msX = 0;

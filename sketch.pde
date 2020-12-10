@@ -1,3 +1,6 @@
+/* @pjs preload="data/help.jpg"; */
+/* @pjs preload="data/info.jpg"; */
+
 // Sketches the output of this program
 void sketch() {
   PImage img;
@@ -103,8 +106,8 @@ void sketch() {
   // -- Sketch Window --
   if(stateWindow != 0) {
     switch(stateWindow) {
-      case  1: img = loadImage("fourier-transform-demo-help.jpg"); break;
-      default: img = loadImage("fourier-transform-demo-info.jpg"); break;
+      case  1: img = loadImage("data/help.jpg"); break;
+      default: img = loadImage("data/info.jpg"); break;
     }
     background(0, 0, 0, 150);
     imageMode(CENTER);

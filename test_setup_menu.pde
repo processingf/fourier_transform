@@ -1,3 +1,8 @@
+/* @pjs preload="data/hdw-winter-wallpaper-abstract-art-13.jpg"; */
+/* @pjs font="data/Algerian-30.ttf"; */
+/* @pjs font="data/AgencyFB-Reg-20.ttf"; */
+/* @pjs font="data/BerlinSansFBDemi-Bold-20.ttf"; */
+
 void test_setup_menu() {
   // -- Set Window Resolution, Quality --
   size(1024, 600);
