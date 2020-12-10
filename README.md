@@ -1,5 +1,3 @@
-# Fourier Transform
-
 This is a real-time fourier transform demonstration program, written using Processing 1.5.1.
 `src.pde` is the main program. All other sources are support modules to the main program.
 
