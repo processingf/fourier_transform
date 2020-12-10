@@ -13,10 +13,12 @@ class Plot {
   // Graphics Buffer
   PGraphics       gBuff;
 
+
   public void setExtent(float xSz, float ySz) {
     extent = new Dim_int((int)xSz, (int)ySz);
     gBuff = createGraphics(extent.x, extent.y, JAVA2D);
   }
+
 
   // Set default Plot settings
   public void setDefaultSettings() {
@@ -40,10 +42,12 @@ class Plot {
     type = 0;
   }
 
+
   // Initialize a Plot (with no specific settings)
   public Plot() {
     setDefaultSettings();
   }
+
 
   // Copy a plot (from the given plot)
   public Plot(Plot x) {
@@ -66,12 +70,14 @@ class Plot {
     type = x.type;
   }
 
+
   // Initialize a Plot (with position setting)
   public Plot(float x_pos, float y_pos) {
     setDefaultSettings();
     position.x = (int)x_pos;
     position.y = (int)y_pos;
   }
+
 
   // Initialize a Plot (with position and size settings)
   public Plot(float x_pos, float y_pos, float x_size, float y_size) {
@@ -81,11 +87,13 @@ class Plot {
     setExtent((int)x_size, (int)y_size);
   }
 
+
   // Set Plot type (0 = default)
   public void setPlotType(int type) {
     if (type >= 0 && type <= 0)
       this.type = type;
   }
+
 
   // Refreshes the 2D-Plot
   private void refresh2D(float ptX[], float ptY[]) {
@@ -173,10 +181,12 @@ class Plot {
     rect(position.x + 0.5*borderWidth, position.y + 0.5*borderWidth, extent.x - borderWidth, extent.y - borderWidth);
   }
 
+
   // Display the plot
   public void display(float ptX[], float ptY[]) {
     refresh2D(ptX, ptY);
   }
+
 
   // Display the plot
   public void display(float x_start, float x_step, float ptY[]) {
@@ -190,7 +200,8 @@ class Plot {
       ptX[i] = x;
     refresh2D(ptX, ptY);
   }
-  
+
+
   public Dim_flt plotPoint(float x, float y) {
     float    scaleX, scaleY;
     float    shiftX, shiftY;
@@ -209,30 +220,31 @@ class Plot {
     if((pnt.x < limTopLeft.x) || (pnt.x > limBottomRight.x) || (pnt.y < limBottomRight.y) || (pnt.y > limTopLeft.y)) pnt = null;
     return(pnt);
   }
-  
-    public Dim_flt[] plotPointsX(float xStart, float yStart, float xStop, float yStop) {
-      int       i, xD;
-      float     m;
-      Dim_flt   pnts[];
-      
-      if(xStop < xStart) {
-        m = xStart;
-        xStart = xStop;
-        xStop = m;
-        m = yStart;
-        yStart = yStop;
-        yStop = m;
-      }
-      xD = floor(xStop - xStart);
-      if(xD == 0) {
-        pnts = new Dim_flt[1];
-        pnts[0] = plotPoint(xStop, yStop);
-        return(pnts);
-      }
-      m = (yStop - yStart) / xD;
-      pnts = new Dim_flt[xD + 1];
-      for(i=0; i<=xD; i++)
-        pnts[i] = plotPoint(xStart + i, yStart + m*i);
+
+
+  public Dim_flt[] plotPointsX(float xStart, float yStart, float xStop, float yStop) {
+    int       i, xD;
+    float     m;
+    Dim_flt   pnts[];
+    
+    if(xStop < xStart) {
+      m = xStart;
+      xStart = xStop;
+      xStop = m;
+      m = yStart;
+      yStart = yStop;
+      yStop = m;
+    }
+    xD = floor(xStop - xStart);
+    if(xD == 0) {
+      pnts = new Dim_flt[1];
+      pnts[0] = plotPoint(xStop, yStop);
       return(pnts);
     }
+    m = (yStop - yStart) / xD;
+    pnts = new Dim_flt[xD + 1];
+    for(i=0; i<=xD; i++)
+      pnts[i] = plotPoint(xStart + i, yStart + m*i);
+    return(pnts);
+  }
 } // End of class Plot

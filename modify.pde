@@ -120,6 +120,7 @@ void modify() {
   }
 }
 
+
 void findFFT(int plotNum) {
   switch(plotNum) {
     case 0:

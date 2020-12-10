@@ -27,6 +27,7 @@ class Dim_int {
   }
 } 
 
+
 // Dimension: float
 class Dim_flt {
   public float	x, y, z;

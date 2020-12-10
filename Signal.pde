@@ -2,6 +2,7 @@
 class Signal {
   float realVal[], imagVal[];
 
+
   // Signal Constructor (Non-parameterized)
   Signal() {
     realVal = new float[0];
@@ -32,6 +33,7 @@ class Signal {
     imagVal = imagp;
   }
 
+
   // Stores the "real" part of a signal in sig_dest
   void real(Signal sig_dest) {
     sig_dest.realVal = realVal;
@@ -45,6 +47,7 @@ class Signal {
     return(sig);
   }
 
+
   // Gives the "imaginary" part of a signal in sig_dest
   void imag(Signal sig_dest) {
     sig_dest.realVal = imagVal;
@@ -57,6 +60,7 @@ class Signal {
     imag(sig);
     return(sig);
   }
+
 
   // Gives the "absolute" of a signal in sig_dest
   void abs(Signal sig_dest) {
@@ -75,6 +79,7 @@ class Signal {
     return(sig);
   }
 
+
   void setAbs(float absVal[]) {
     int    i, len;
     float  k, absOld;
@@ -89,6 +94,7 @@ class Signal {
       imagVal[i] = imagVal[i] * k;
     }
   }
+
 
   // The Fast Fourier Transform routines given below marked with <by Jerome R. Breitenbach>
   // belong to the following author:
@@ -146,6 +152,7 @@ class Signal {
     }
   }
 
+
   // Private function to calculate "FFT", <by Jerome R. Breitenbach>
   private void fft_int(int N, Signal x, Signal X) {
     // Create a scratch signal
@@ -167,6 +174,7 @@ class Signal {
     fft(sig);
     return(sig);
   }
+
 
   // Private function to calculate "IFFT", <by Jerome R. Breitenbach>
   private void ifft_int(int N, Signal x, Signal X) {
@@ -205,6 +213,7 @@ class Signal {
   }
 
 // -----------------------------------------------------
+
 
   // Perfroms FFT shift operation on a signal
   void fftShift(Signal sig_dest) {

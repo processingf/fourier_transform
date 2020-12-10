@@ -1,4 +1,5 @@
 static class DefaultSignal {
+
   // c
   public static float[] constant(float c, float tStart, float tStop, float Fs) {
     int      i, N;
@@ -12,6 +13,7 @@ static class DefaultSignal {
     return(y);
   }
   
+
   // A*sin(b*t + c)
   public static float[] sine(float A, float b, float c, float tStart, float tStop, float Fs) {
     int      i, N;
@@ -25,6 +27,7 @@ static class DefaultSignal {
     return(y);
   }  
   
+
   // A*cos(b*t + c)
   public static float[] cosine(float A, float b, float c, float tStart, float tStop, float Fs) {
     int      i, N;
@@ -38,6 +41,7 @@ static class DefaultSignal {
     return(y);
   }  
   
+
   // A*rect(b*t + c)
   public static float[] rect(float A, float b, float c, float tStart, float tStop, float Fs) {
     int      i, N;
@@ -54,6 +58,7 @@ static class DefaultSignal {
     return(y);
   }
   
+
   public static float[] signal(int sig, float A, float b, float c, float tStart, float tStop, float Fs) {
     switch(sig) {
       case 0 :  return(constant(c, tStart, tStop, Fs));
@@ -63,6 +68,7 @@ static class DefaultSignal {
     }
   }
   
+
   public static float[] setSignal(int sig) {
     switch(sig) {
       case 0 :  return(constant(0, plotTstart, plotTstop, plotPoints));
