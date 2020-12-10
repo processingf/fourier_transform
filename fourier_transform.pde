@@ -14,7 +14,7 @@ static int      i;
 
 void setup() {
   // -- Set Window Resolution, Quality --
-  size(screen.width, screen.height);
+  size(1300, 700);
   smooth();
   
   // -- Initialize --
