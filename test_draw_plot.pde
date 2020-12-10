@@ -1,5 +1,4 @@
-void test_draw_plot()
-{
+void test_draw_plot() {
   int    i;
   float y[] = new float[100];
 

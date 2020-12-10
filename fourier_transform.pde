@@ -12,8 +12,7 @@ static int      stateDefSigNum, stateDefSig;
 static int      stateWindow;
 static int      i;
 
-void setup()
-{
+void setup() {
   // -- Set Window Resolution, Quality --
   size(screen.width, screen.height);
   smooth();
@@ -26,28 +25,22 @@ void setup()
   redraw();
 }
 
-void mouseMoved()
-{
+void mouseMoved() {
   redraw();
 }
 
-void mousePressed()
-{
+void mousePressed() {
   redraw();
 }
 
-void mouseDragged()
-{
+void mouseDragged() {
   redraw();
 }
 
-void draw()
-{
+void draw() {
   input();
   if(clickId != 0 || stateWindow != 0) modify();
   if(hoverIdOld != hoverId) sketch();
   else if(clickId != 0) sketch();
   clickId = 0;
 }
-
-

@@ -1,10 +1,6 @@
-void sketch()
-{
-  /*
-      Sketches the output of this program
-   */
-   
-   PImage    img;
+// Sketches the output of this program
+void sketch() {
+  PImage img;
    
   // -- Draw the Background --
   image(bckImg, 0, 0);
@@ -14,19 +10,16 @@ void sketch()
   stroke(160, 220, 180, 180);
   strokeWeight(0.005*width);
   line(0.47*width, 0.5*height, 0.53*width, 0.5*height);
-  if(stateArrow == 0)
-  {
+  if(stateArrow == 0) {
     line(0.47*width, 0.5*height, 0.48*width, 0.49*height);
     line(0.47*width, 0.5*height, 0.48*width, 0.51*height);
   }
-  else
-  {
+  else {
     line(0.53*width, 0.5*height, 0.52*width, 0.49*height);
     line(0.53*width, 0.5*height, 0.52*width, 0.51*height);
   }
   // Graphic: Left & Right Buttons
-  if((stateButtonsLeft > 0) || (stateButtonsRight > 0))
-  {
+  if((stateButtonsLeft > 0) || (stateButtonsRight > 0)) {
     strokeCap(ROUND);
     strokeJoin(ROUND);
     stroke(100, 100, 200, 200);
@@ -54,11 +47,9 @@ void sketch()
   }
   
   // -- Draw the buttons as per hover state
-  if(hoverId != 0)
-  {
+  if(hoverId != 0) {
     i = hoverId / 10;
-    switch(i)
-    {
+    switch(i) {
       case 0:
         // Graphic: Power buttons
         strokeWeight(0.002*width);
@@ -81,8 +72,7 @@ void sketch()
         strokeJoin(ROUND);
         stroke(220, 220, 220, 160);
         strokeWeight(0.015*width);
-        switch(hoverId)
-        {
+        switch(hoverId) {
           case 21: line(0.135*width, 0.95*height, 0.145*width, 0.95*height); break;
           case 22: line(0.235*width, 0.95*height, 0.245*width, 0.95*height); break;
           case 23: line(0.335*width, 0.95*height, 0.345*width, 0.95*height); break;
@@ -111,10 +101,8 @@ void sketch()
   sketchPlots();
   
   // -- Sketch Window --
-  if(stateWindow != 0)
-  {
-    switch(stateWindow)
-    {
+  if(stateWindow != 0) {
+    switch(stateWindow) {
       case  1: img = loadImage("fourier-transform-demo-help.jpg"); break;
       default: img = loadImage("fourier-transform-demo-info.jpg"); break;
     }
@@ -126,15 +114,13 @@ void sketch()
   }
 }
 
-void sketchPlots()
-{
+void sketchPlots() {
   float plotStart, plotStep;
   
   // -- Draw the plots --
   if(stateArrow == 1) {plotStart = plotTstart; plotStep = plotTstep;}
   else {plotStart = plotFstart; plotStep = plotFstep;}
-  switch(stateButtonsLeft)
-  {
+  switch(stateButtonsLeft) {
     case 3:
       plots[0].display(plotStart, plotStep, sigLHS.imagVal);
       plots[1].display(plotStart, plotStep, sigLHSabs.realVal);
@@ -150,8 +136,7 @@ void sketchPlots()
   }
   if(stateArrow != 1) {plotStart = plotTstart; plotStep = plotTstep;}
   else {plotStart = plotFstart; plotStep = plotFstep;}
-  switch(stateButtonsRight)
-  {
+  switch(stateButtonsRight) {
     case 3:
       plots[2].display(plotStart, plotStep, sigRHS.imagVal);
       plots[3].display(plotStart, plotStep, sigRHSabs.realVal);
@@ -166,5 +151,3 @@ void sketchPlots()
       break;
   }
 }
-
-

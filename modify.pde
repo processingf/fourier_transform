@@ -1,46 +1,36 @@
-void modify()
-{
-  /*
-    Sketches the output of this program
-   */
-   
+// Sketches the output of this program
+void modify() {
    float      k;
    int        i, j, m;
    Dim_flt    pltPnts[];
    
   // Re-sketch only after Window is closed
-  if(stateWindow != 0)
-  {
-    if(mousePressed)
-    {
+  if(stateWindow != 0) {
+    if(mousePressed) {
       stateWindow = 0;
       hoverIdOld = 50;
       hoverId = 0;
     }
-    else
-    {
+    else {
       hoverIdOld = 0;
       hoverId = 0;
       clickId = 0;
     }
   }
   // -- Click Controls --
-  switch(clickId)
-  {
+  switch(clickId) {
     // New Window cases
     case 1: stateWindow = 1; break;
     case 2: stateWindow = 2; break;
     case 3: exit(); break;
     // Change Arrow state
     case 11: stateArrow = (stateArrow + 1) & 1;
-    if(msX < 0.5*width)
-    {
+    if(msX < 0.5*width) {
       if(stateArrow == 1) sigRHS = sigLHS.fftShift().fft().fftShift();
       else sigRHS = sigLHS.fftShift().ifft().fftShift();
       sigRHS.abs(sigRHSabs);
     }
-    else
-    {
+    else {
       if(stateArrow == 1) sigLHS = sigRHS.fftShift().ifft().fftShift();
       else sigLHS = sigRHS.fftShift().fft().fftShift();
       sigLHS.abs(sigLHSabs);
@@ -86,14 +76,12 @@ void modify()
       // Find the Plot Index
       i = clickId - 41;
       pltPnts = plots[i].plotPointsX(msXold, msYold, msX, msY);
-      for(j=0; j<pltPnts.length; j++)
-      {
+      for(j=0; j<pltPnts.length; j++) {
         if(pltPnts[j] == null) continue;
         m = (int)(((pltPnts[j].x - plots[i].limTopLeft.x) / (plots[i].limBottomRight.x - plots[i].limTopLeft.x)) * plotPoints);
         m = (m > plotMaxIndex)? plotMaxIndex : m;
         // Change signal values as per Plot Index
-        switch(i)
-        {
+        switch(i) {
           case 0:
             if((stateButtonsLeft & 4) > 0) sigLHS.realVal[m] = pltPnts[j].y;
             else sigLHS.imagVal[m] = pltPnts[j].y;
@@ -101,8 +89,7 @@ void modify()
             break;
           case 1:
             if((stateButtonsLeft & 2) > 0) sigLHS.imagVal[m] = pltPnts[j].y;
-            else
-            {
+            else {
               if(pltPnts[j].y < 0) pltPnts[j].y = 0;
               if(sigLHSabs.realVal[m] > 0) k = pltPnts[j].y / sigLHSabs.realVal[m];
               else k = 1.0 / sqrt(2.0);
@@ -118,8 +105,7 @@ void modify()
             break;
           case 3:
             if((stateButtonsRight & 2) > 0) sigRHS.imagVal[m] = pltPnts[j].y;
-            else
-            {
+            else {
               if(pltPnts[j].y < 0) pltPnts[j].y = 0;
               if(sigRHSabs.realVal[m] > 0) k = pltPnts[j].y / sigRHSabs.realVal[m];
               else k = 1.0 / sqrt(2.0);
@@ -134,10 +120,8 @@ void modify()
   }
 }
 
-void findFFT(int plotNum)
-{
-  switch(plotNum)
-  {
+void findFFT(int plotNum) {
+  switch(plotNum) {
     case 0:
     case 1:
       if(stateArrow == 1) sigRHS = sigLHS.fftShift().fft().fftShift();

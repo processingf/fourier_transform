@@ -1,5 +1,4 @@
-void test_setup_menu()
-{
+void test_setup_menu() {
   // -- Set Window Resolution, Quality --
   size(1024, 600);
   smooth();
@@ -71,12 +70,11 @@ void test_setup_menu()
   save("fourier-transform-demo-main-screen.png");
   
   // -- Create 4 plots --
-//  stroke(0, 0, 0);
-//  strokeWeight(1);
-//  fill(255, 255, 255, 120);
-//  rect(0.02*width, 0.08*height, 0.44*width, 0.40*height);
-//  rect(0.02*width, 0.52*height, 0.44*width, 0.40*height);
-//  rect(0.54*width, 0.08*height, 0.44*width, 0.40*height);
-//  rect(0.54*width, 0.52*height, 0.44*width, 0.40*height);
+  //  stroke(0, 0, 0);
+  //  strokeWeight(1);
+  //  fill(255, 255, 255, 120);
+  //  rect(0.02*width, 0.08*height, 0.44*width, 0.40*height);
+  //  rect(0.02*width, 0.52*height, 0.44*width, 0.40*height);
+  //  rect(0.54*width, 0.08*height, 0.44*width, 0.40*height);
+  //  rect(0.54*width, 0.52*height, 0.44*width, 0.40*height);
 }
-

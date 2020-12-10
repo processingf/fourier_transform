@@ -1,34 +1,25 @@
-class Plot
-{
-  /*
-	Graphical Plotter
-   */
-
+// Graphical Plotter
+class Plot {
   // Properties
-  public color  	backClr, borderClr, lineClr, textClr;
-  public Dim_int	position;
-  private Dim_int       extent;
-  public Dim_flt        autoScaleFactor;
-  public int		borderWidth, lineWidth;
-  public Dim_flt	limTopLeft, limBottomRight;
-  public boolean        showLimits;
-  private int		type;
+  public  color  	backClr, borderClr, lineClr, textClr;
+  public  Dim_int	position;
+  private Dim_int extent;
+  public  Dim_flt autoScaleFactor;
+  public  int		  borderWidth, lineWidth;
+  public  Dim_flt	limTopLeft, limBottomRight;
+  public  boolean showLimits;
+  private int		  type;
   
   // Graphics Buffer
-  PGraphics            gBuff;
+  PGraphics       gBuff;
 
-  public void setExtent(float xSz, float ySz)
-  {
+  public void setExtent(float xSz, float ySz) {
     extent = new Dim_int((int)xSz, (int)ySz);
     gBuff = createGraphics(extent.x, extent.y, JAVA2D);
   }
 
-  public void setDefaultSettings()
-  {
-    /*
-	Set default Plot settings
-     */
-
+  // Set default Plot settings
+  public void setDefaultSettings() {
     // Set Default colours
     backClr = color(0, 0, 0, 150);
     borderClr = color(50, 50, 50, 50);
@@ -49,21 +40,13 @@ class Plot
     type = 0;
   }
 
-  public Plot()
-  {
-    /*
-	Initialize a Plot (with no specific settings)
-     */
-
+  // Initialize a Plot (with no specific settings)
+  public Plot() {
     setDefaultSettings();
   }
 
-  public Plot(Plot x)
-  {
-    /*
-	Copy a plot (from the given plot)
-     */
-
+  // Copy a plot (from the given plot)
+  public Plot(Plot x) {
     backClr = color(red(x.backClr), green(x.backClr), blue(x.backClr), alpha(x.backClr));
     borderClr = color(red(x.borderClr), green(x.borderClr), blue(x.borderClr), alpha(x.borderClr));
     lineClr = color(red(x.lineClr), green(x.lineClr), blue(x.lineClr), alpha(x.lineClr));
@@ -83,75 +66,54 @@ class Plot
     type = x.type;
   }
 
-  public Plot(float x_pos, float y_pos)
-  {
-    /*
-	Initialize a Plot (with position setting)
-     */
-
+  // Initialize a Plot (with position setting)
+  public Plot(float x_pos, float y_pos) {
     setDefaultSettings();
     position.x = (int)x_pos;
     position.y = (int)y_pos;
   }
 
-  public Plot(float x_pos, float y_pos, float x_size, float y_size)
-  {
-    /*
-	Initialize a Plot (with position and size settings)
-     */
-
+  // Initialize a Plot (with position and size settings)
+  public Plot(float x_pos, float y_pos, float x_size, float y_size) {
     setDefaultSettings();
     position.x = (int)x_pos;
     position.y = (int)y_pos;
     setExtent((int)x_size, (int)y_size);
   }
 
-  public void setPlotType(int type)
-  {
-    /*
-	Set Plot type (0 = default)
-     */
-
+  // Set Plot type (0 = default)
+  public void setPlotType(int type) {
     if (type >= 0 && type <= 0)
       this.type = type;
   }
 
-  private void refresh2D(float ptX[], float ptY[])
-  {
-    /*
-	Refreshes the 2D-Plot
-     */
-
+  // Refreshes the 2D-Plot
+  private void refresh2D(float ptX[], float ptY[]) {
     int		i, len, x, y;
     float	scaleX, scaleY, shiftX, shiftY;
-    float       minX, maxX, minY, maxY;
+    float minX, maxX, minY, maxY;
 
     // Auto-Scale, if necessary
-    if((autoScaleFactor.x != 0) && (autoScaleFactor.y != 0) && (autoScaleFactor.z != 0))
-    {
+    if((autoScaleFactor.x != 0) && (autoScaleFactor.y != 0) && (autoScaleFactor.z != 0)) {
       minX = min(ptX);
       maxX = max(ptX);
       minY = min(ptY);
       maxY = max(ptY);
       scaleX = 1/autoScaleFactor.x;
       scaleY = 1/autoScaleFactor.y;
-      if(maxX > minX)
-      {
+      if(maxX > minX) {
         limTopLeft.x = 0.5*(maxX*(1 - scaleX) + minX*(1 + scaleX));
         limBottomRight.x = 0.5*(maxX*(1 + scaleX) + minX*(1 - scaleX));
       }
-      else
-      {
+      else {
         limTopLeft.x = maxX - 1;
         limBottomRight.x = maxX + 1;
       }
-      if(maxY > minY)
-      {
+      if(maxY > minY) {
         limTopLeft.y = 0.5*(maxY*(1 + scaleY) + minY*(1 - scaleY));
         limBottomRight.y = 0.5*(maxY*(1 - scaleY) + minY*(1 + scaleY));
       }
-      else
-      {
+      else {
         limTopLeft.y = maxY + 1;
         limBottomRight.y = maxY - 1;
       }
@@ -178,8 +140,7 @@ class Plot
     gBuff.stroke(lineClr);
     gBuff.strokeWeight(lineWidth);
     gBuff.beginShape();
-    for (i=0; i<len; i++)
-    {
+    for (i=0; i<len; i++) {
       x = (int)(ptX[i]*scaleX + shiftX);
       y = (int)(ptY[i]*scaleY + shiftY);
       gBuff.vertex(x, y);
@@ -187,9 +148,8 @@ class Plot
     gBuff.endShape();
     
     // Draw the endpoint axis values, if required
-    if(showLimits)
-    {
-      float   fnt2;
+    if(showLimits) {
+      float fnt2;
       
       fnt2 = 0.012*width;
       gBuff.fill(textClr);
@@ -213,21 +173,13 @@ class Plot
     rect(position.x + 0.5*borderWidth, position.y + 0.5*borderWidth, extent.x - borderWidth, extent.y - borderWidth);
   }
 
-  public void display(float ptX[], float ptY[])
-  {
-    /*
-	Display the plot
-     */
-
+  // Display the plot
+  public void display(float ptX[], float ptY[]) {
     refresh2D(ptX, ptY);
   }
 
-  public void display(float x_start, float x_step, float ptY[])
-  {
-    /*
-	Display the plot
-     */
-
+  // Display the plot
+  public void display(float x_start, float x_step, float ptY[]) {
     float  x;
     float  ptX[];
     int     i, len;
@@ -239,8 +191,7 @@ class Plot
     refresh2D(ptX, ptY);
   }
   
-  public Dim_flt plotPoint(float x, float y)
-  {
+  public Dim_flt plotPoint(float x, float y) {
     float    scaleX, scaleY;
     float    shiftX, shiftY;
     Dim_flt  pnt;
@@ -259,14 +210,12 @@ class Plot
     return(pnt);
   }
   
-    public Dim_flt[] plotPointsX(float xStart, float yStart, float xStop, float yStop)
-    {
+    public Dim_flt[] plotPointsX(float xStart, float yStart, float xStop, float yStop) {
       int       i, xD;
       float     m;
       Dim_flt   pnts[];
       
-      if(xStop < xStart)
-      {
+      if(xStop < xStart) {
         m = xStart;
         xStart = xStop;
         xStop = m;
@@ -275,8 +224,7 @@ class Plot
         yStop = m;
       }
       xD = floor(xStop - xStart);
-      if(xD == 0)
-      {
+      if(xD == 0) {
         pnts = new Dim_flt[1];
         pnts[0] = plotPoint(xStop, yStop);
         return(pnts);
@@ -288,6 +236,3 @@ class Plot
       return(pnts);
     }
 } // End of class Plot
-
-
-

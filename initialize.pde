@@ -1,9 +1,5 @@
-void initialize()
-{
-  /*
-      Initializes this program
-   */
-   
+// Initializes this program
+void initialize() {
   // -- Load all Data required --
   fntHeading = loadFont("Algerian-30.vlw");
   fntAuthor = loadFont("AgencyFB-Reg-20.vlw");
@@ -50,5 +46,3 @@ void initialize()
   image(bckImg, 0, 0, width, height);
   bckImg = get();
 }
-
-

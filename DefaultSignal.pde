@@ -1,8 +1,6 @@
-static class DefaultSignal
-{
+static class DefaultSignal {
   // c
-  public static float[] constant(float c, float tStart, float tStop, float Fs)
-  {
+  public static float[] constant(float c, float tStart, float tStop, float Fs) {
     int      i, N;
     float    Ts, y[];
     
@@ -15,8 +13,7 @@ static class DefaultSignal
   }
   
   // A*sin(b*t + c)
-  public static float[] sine(float A, float b, float c, float tStart, float tStop, float Fs)
-  {
+  public static float[] sine(float A, float b, float c, float tStart, float tStop, float Fs) {
     int      i, N;
     float    Ts, y[];
     
@@ -29,8 +26,7 @@ static class DefaultSignal
   }  
   
   // A*cos(b*t + c)
-  public static float[] cosine(float A, float b, float c, float tStart, float tStop, float Fs)
-  {
+  public static float[] cosine(float A, float b, float c, float tStart, float tStop, float Fs) {
     int      i, N;
     float    Ts, y[];
     
@@ -43,8 +39,7 @@ static class DefaultSignal
   }  
   
   // A*rect(b*t + c)
-  public static float[] rect(float A, float b, float c, float tStart, float tStop, float Fs)
-  {
+  public static float[] rect(float A, float b, float c, float tStart, float tStop, float Fs) {
     int      i, N;
     float    t, Ts, y[];
     
@@ -59,10 +54,8 @@ static class DefaultSignal
     return(y);
   }
   
-  public static float[] signal(int sig, float A, float b, float c, float tStart, float tStop, float Fs)
-  {
-    switch(sig)
-    {
+  public static float[] signal(int sig, float A, float b, float c, float tStart, float tStop, float Fs) {
+    switch(sig) {
       case 0 :  return(constant(c, tStart, tStop, Fs));
       case 1 :  return(sine(A, b, c, tStart, tStop, Fs));
       case 2 :  return(cosine(A, b, c, tStart, tStop, Fs));
@@ -70,10 +63,8 @@ static class DefaultSignal
     }
   }
   
-  public static float[] setSignal(int sig)
-  {
-    switch(sig)
-    {
+  public static float[] setSignal(int sig) {
+    switch(sig) {
       case 0 :  return(constant(0, plotTstart, plotTstop, plotPoints));
       case 1 :  return(sine(1, 2*PI*10, 0, plotTstart, plotTstop, plotPoints));
       case 2 :  return(cosine(1, 2*PI*10, 0, plotTstart, plotTstop, plotPoints));
@@ -81,4 +72,3 @@ static class DefaultSignal
     }
   }
 }
-
